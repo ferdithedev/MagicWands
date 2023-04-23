@@ -1,0 +1,6 @@
+name: MagicWands
+version: '${project.version}'
+main: me.ferdithedev.magicwands.MagicWands
+depend:
+  - OverBlock
+api-version: 1.18
