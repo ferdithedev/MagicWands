@@ -1,9 +1,6 @@
 package me.ferdithedev.magicwands;
 
-import me.ferdithedev.magicwands.items.Accio;
-import me.ferdithedev.magicwands.items.AlarteAscendare;
-import me.ferdithedev.magicwands.items.AvadaKedavra;
-import me.ferdithedev.magicwands.items.CruciatusCurse;
+import me.ferdithedev.magicwands.items.*;
 import me.ferdithedev.overblock.api.OBAPI;
 import me.ferdithedev.overblock.obitems.ItemPackage;
 import me.ferdithedev.overblock.obitems.OBItem;
@@ -33,6 +30,7 @@ public final class MagicWands extends JavaPlugin {
         items.add(new Accio(this));
         items.add(new AlarteAscendare(this));
         items.add(new AvadaKedavra(this));
+        items.add(new Avifors(this));
         items.add(new CruciatusCurse(this));
         ItemPackage itemPackage = new ItemPackage(this,"MagicWands","§r§a§lMagic Wands", Material.STICK,items,"§r§7Fun new wands inspired by the harry potter universe");
         OBAPI.registerItemPackage(itemPackage);

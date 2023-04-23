@@ -37,7 +37,7 @@ public class AlarteAscendare extends OBItem {
                     }
                 }
             };
-            particles.runTaskTimer(MagicWands.getInstance(),0,1);
+            particles.runTaskTimerAsynchronously(MagicWands.getInstance(),0,1);
             Effects.playSoundDistance(player.getLocation(),8, Sound.ENTITY_ELDER_GUARDIAN_CURSE,0.2f,2);
             Effects.playSoundDistance(player.getLocation(),8,Sound.BLOCK_BEACON_ACTIVATE,0.3f,2f);
             lookingAt.setVelocity(new Vector(0,1.75,0));
