@@ -31,6 +31,10 @@ public final class MagicWands extends JavaPlugin {
         items.add(new AlarteAscendare(this));
         items.add(new AvadaKedavra(this));
         items.add(new Avifors(this));
+
+        items.add(new Bombarda(this));
+        items.add(new BombardaMaxima(this));
+
         items.add(new CruciatusCurse(this));
         ItemPackage itemPackage = new ItemPackage(this,"MagicWands","§r§a§lMagic Wands", Material.STICK,items,"§r§7Fun new wands inspired by the harry potter universe");
         OBAPI.registerItemPackage(itemPackage);

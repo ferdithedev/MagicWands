@@ -4,6 +4,7 @@ import me.ferdithedev.overblock.games.ItemSpawner;
 import me.ferdithedev.overblock.obitems.OBItem;
 import me.ferdithedev.overblock.obitems.OBItemRarity;
 import me.ferdithedev.overblock.obitems.OBItemType;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -29,8 +30,11 @@ public class Avifors extends OBItem {
         new BukkitRunnable() {
             @Override
             public void run() {
-                player.setAllowFlight(false);
-                player.setFlying(false);
+                if(player.getGameMode() != GameMode.CREATIVE) {
+                    player.setAllowFlight(false);
+                    player.setFlying(false);
+                }
+
                 player.getInventory().setHelmet(new ItemStack(Material.AIR));
             }
         }.runTaskLaterAsynchronously(getPlugin(),60);
