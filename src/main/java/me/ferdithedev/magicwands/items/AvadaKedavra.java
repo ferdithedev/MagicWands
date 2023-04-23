@@ -9,12 +9,10 @@ import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class AvadaKedavra extends OBItem {
 
@@ -48,7 +46,6 @@ public class AvadaKedavra extends OBItem {
         }
 
         MagicWands.spellSounds(player, eyes, lightningTarget, particleEffect);
-        //drawLine(player.getEyeLocation(),lightningTarget);
         return true;
     }
 

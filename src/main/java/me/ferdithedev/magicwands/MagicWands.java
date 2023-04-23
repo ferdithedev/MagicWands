@@ -28,7 +28,6 @@ public final class MagicWands extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
         instance = this;
         List<OBItem> items = new ArrayList<>();
         items.add(new Accio(this));
@@ -75,13 +74,11 @@ public final class MagicWands extends JavaPlugin {
         double initialX, initialY, initialZ;
         double x, y, z;
 
-        // Z_Axis rotation (Pitch)
         initialX = v.getX();
         initialY = v.getY();
         x = initialX * cosPitch - initialY * sinPitch;
         y = initialX * sinPitch + initialY * cosPitch;
 
-        // Y_Axis rotation (Yaw)
         initialZ = v.getZ();
         initialX = x;
         z = initialZ * cosYaw - initialX * sinYaw;
