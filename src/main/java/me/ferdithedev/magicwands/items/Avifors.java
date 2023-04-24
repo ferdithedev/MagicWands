@@ -4,9 +4,10 @@ import me.ferdithedev.overblock.games.ItemSpawner;
 import me.ferdithedev.overblock.obitems.OBItem;
 import me.ferdithedev.overblock.obitems.OBItemRarity;
 import me.ferdithedev.overblock.obitems.OBItemType;
+import me.ferdithedev.overblock.util.Effects;
 import me.ferdithedev.overblock.util.invs.InventoryItemCreator;
-import org.bukkit.GameMode;
-import org.bukkit.Material;
+import org.bukkit.*;
+import org.bukkit.Color;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -32,16 +33,18 @@ public class Avifors extends OBItem {
             birdTime.put(player,birdTime.get(player)+3);
         } else {
             birdTime.put(player,3);
+            Effects.ParticleEffectPart particle = new Effects.ParticleEffectPart(Particle.REDSTONE, 20, .1,.75,.1,new Particle.DustOptions(Color.WHITE,3),0.1);
+            particle.spawn(player.getLocation().add(0,1,0));
+            Effects.playSoundDistance(player.getLocation(),5, Sound.ENTITY_ENDER_DRAGON_FLAP,1,2);
         }
         if(!checkFly) checkFly();
         return true;
     }
 
     @Override
-    public void click(PlayerInteractEvent e) {
-        function(e.getPlayer());
-        e.getPlayer().getInventory().removeItem(getItemStack());
+    public boolean click(PlayerInteractEvent e) {
         e.setCancelled(true);
+        return function(e.getPlayer());
     }
 
     boolean checkFly = false;
@@ -52,7 +55,6 @@ public class Avifors extends OBItem {
                 birdTime.remove(p);
                 if(p.getGameMode() != GameMode.CREATIVE) {
                     p.setAllowFlight(false);
-                    p.setFlying(false);
                 }
 
                 p.getInventory().setHelmet(new ItemStack(Material.AIR));
@@ -60,7 +62,6 @@ public class Avifors extends OBItem {
                 birdTime.put(p,birdTime.get(p)-1);
 
                 p.setAllowFlight(true);
-                p.setFlying(true);
                 p.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY,22,5,false,false,false));
                 p.getInventory().setHelmet(new InventoryItemCreator(ItemSpawner.getSkull("https://textures.minecraft.net/texture/ebee642cb4b4fb6671dec9ab9349f0c1ca83bc152738956c1efa2ff2c1030960")).setDisplayName("§dBirdie").get());
             }

@@ -4,7 +4,10 @@ import me.ferdithedev.magicwands.MagicWands;
 import me.ferdithedev.overblock.obitems.OBItem;
 import me.ferdithedev.overblock.obitems.OBItemRarity;
 import me.ferdithedev.overblock.obitems.OBItemType;
+import me.ferdithedev.overblock.util.Effects;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -23,6 +26,10 @@ public class Bombarda extends OBItem {
         Block block = MagicWands.blockLookingAt(player);
         if(block != null) {
             player.getWorld().createExplosion(block.getX(),block.getY(),block.getZ(),2f,false,false,player);
+            Effects.drawParticleLine(player.getEyeLocation(),block.getLocation(),
+                    new Effects.ParticleEffectPart(Particle.WAX_OFF,2,0,0,0,null,0),
+                    0.2);
+            Effects.playSoundDistance(player.getLocation(),5, Sound.ENTITY_ENDER_DRAGON_HURT,100,2);
             for(Entity entity : player.getWorld().getNearbyEntities(block.getLocation(),4,4,4, e->e instanceof Player)) {
                 if(entity instanceof Player) {
                     if(entity != player) {
@@ -37,12 +44,11 @@ public class Bombarda extends OBItem {
     }
 
     @Override
-    public void click(PlayerInteractEvent e) {
+    public boolean click(PlayerInteractEvent e) {
         if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if(function(e.getPlayer())) {
-                e.getPlayer().getInventory().removeItem(getItemStack());
-            }
             e.setCancelled(true);
+            return function(e.getPlayer());
         }
+        return false;
     }
 }
