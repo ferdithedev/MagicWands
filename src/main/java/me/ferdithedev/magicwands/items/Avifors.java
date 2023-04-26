@@ -24,7 +24,7 @@ public class Avifors extends OBItem {
     private static final Map<Player, Integer> birdTime = new HashMap<>();
 
     public Avifors(JavaPlugin plugin) {
-        super(plugin, Material.FEATHER, "Avifors", 0, OBItemType.TOOL, OBItemRarity.UNIQUE, "§7Transform yourself into a bird for 3 seconds");
+        super(plugin, Material.FEATHER, "Avifors", 0, OBItemType.TOOL, OBItemRarity.EPIC, "§7Transform yourself into a bird for 3 seconds");
     }
 
     @Override
