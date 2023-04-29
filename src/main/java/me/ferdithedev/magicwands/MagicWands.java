@@ -37,6 +37,7 @@ public final class MagicWands extends JavaPlugin {
         items.add(new BrackiumEmendo(this));
 
         items.add(new CarpeRetractum(this));
+        items.add(new Colloshoo(this));
         items.add(new CruciatusCurse(this));
         ItemPackage itemPackage = new ItemPackage(this,"MagicWands","§r§a§lMagic Wands", Material.STICK,items,"§r§7Fun new wands inspired by the harry potter universe");
         OBAPI.registerItemPackage(itemPackage);
